@@ -1,0 +1,43 @@
+:root {
+    --fontSize: 30px;
+    --minFontSize: 10px;
+    --flip: 1;
+}
+
+body {
+    background-color: pink;
+    margin: 0;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+p {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    padding: 20px;
+    margin: 0;
+    font-size: max(var(--fontSize), var(--minFontSize));
+    transform: scale(var(--flip, 1));
+    white-space: pre-wrap;
+}
+
+p:focus + footer {
+    display: block;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    padding: 15px;
+    box-sizing: border-box;
+    background: gainsboro;
+    box-shadow: 0 -1px 5px black;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    display: none;
+}
