@@ -15,12 +15,14 @@ body {
 p {
     box-sizing: border-box;
     position: absolute;
+    top: 0;
     width: 100%;
     padding: 20px;
     margin: 0;
     font-size: max(var(--fontSize), var(--minFontSize));
     transform: scale(var(--flip, 1));
     white-space: pre-wrap;
+    transition: top 0.25s;
 }
 
 p:focus + footer {
