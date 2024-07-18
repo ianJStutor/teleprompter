@@ -77,10 +77,10 @@ p.addEventListener("focus", () => settings.editMode = true);
 p.addEventListener("blur", () => {
     settings.editMode = false;
     const text = p.innerHTML
-                    .replaceAll("<br>", "")
-                    .replaceAll("</div>", "")
                     .replaceAll("&nbsp;", "")
-                    .replaceAll("<div>", "<br>")
+                    .replaceAll("<div><br></div>", "<br><br>")
+                    .replaceAll("<div>", "")
+                    .replaceAll("</div>", "")
                     .trim();
     localStorage.setItem("text", text);
     if (!text) p.textContent = settings.lorem;
