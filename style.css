@@ -2,6 +2,7 @@
     --fontSize: 30px;
     --minFontSize: 10px;
     --flip: 1;
+    --darkMode: 0;
 }
 
 body {
@@ -10,6 +11,16 @@ body {
     height: 100dvh;
     overflow: hidden;
     font-family: sans-serif;
+    background-color: rgb(
+        calc(255 - var(--darkMode) * 255),
+        calc(255 - var(--darkMode) * 255),
+        calc(255 - var(--darkMode) * 255)
+    );
+    color: rgb(
+        calc(var(--darkMode) * 255),
+        calc(var(--darkMode) * 255),
+        calc(var(--darkMode) * 255)
+    );
 }
 
 p {

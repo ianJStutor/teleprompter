@@ -4,56 +4,72 @@ const settings = {
     speed: 10,
     flip: 1,
     editMode: false,
+    darkMode: false,
     lorem: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 };
 const root = document.querySelector(":root");
 const p = document.querySelector("p");
 const actions = new Map();
 
+//(-) reduce font size
 actions.set(["-"], () => {
     settings.fontSize = Math.max(settings.fontSize - 1, settings.minFontSize);
     setStyle("--fontSize", `${settings.fontSize}px`);
     goToTop();
 });
+//(SHIFT+-) fast increase font size
 actions.set(["_"], () => {
     settings.fontSize = Math.max(settings.fontSize - 5, settings.minFontSize);
     setStyle("--fontSize", `${settings.fontSize}px`);
     goToTop();
 });
+//(=) increase font size
 actions.set(["="], () => {
     settings.fontSize++;
     setStyle("--fontSize", `${settings.fontSize}px`);
     goToTop();
 });
+//(SHIFT+=) fast increase font size
 actions.set(["+"], () => {
     settings.fontSize += 5;
     setStyle("--fontSize", `${settings.fontSize}px`);
     goToTop();
 });
+//(])(}) flip text
 actions.set(["[", "{"], () => {
     settings.flip = 1;
     setStyle("--flip", settings.flip);
     goToTop();
 });
+//(])(}) unflip text
 actions.set(["]", "}"], () => {
     settings.flip = -1;
     setStyle("--flip", settings.flip);
     goToTop();
 });
+//(ArrowDown)(ArrowRight) scroll down
 actions.set(["ArrowDown", "ArrowRight"], () => {
     if (p.scrollHeight > window.innerHeight) {
         const top = Number(p.style.top.slice(0, -2)) - settings.speed;
         p.style.top = `${top}px`;
     }
 });
+//(ArrowUp)(ArrowLeft) scroll up
 actions.set(["ArrowUp", "ArrowLeft"], () => {
     if (p.scrollHeight > window.innerHeight) {
         const top = Number(p.style.top.slice(0, -2)) + settings.speed;
         p.style.top = `${top}px`;
     }
 });
+//(/)(?) jump to top of text
 actions.set(["/", "?"], goToTop);
+//(Enter) fullscreen
 actions.set(["Enter"], toggleFullScreen);
+//(.)(>) toggle dark mode
+actions.set([".", ">"], () => {
+    settings.darkMode = !settings.darkMode;
+    setStyle("--darkMode", Number(settings.darkMode));
+});
 
 function getStyle(name) {
     return getComputedStyle(root).getPropertyValue(name);
