@@ -63,6 +63,14 @@ actions.set(["ArrowUp", "ArrowLeft"], () => {
 });
 //(/)(?) jump to top of text
 actions.set(["/", "?"], goToTop);
+//(') increase scroll speed
+actions.set(["'"], () => {
+    settings.speed += 2;
+});
+//(;) decrease scroll speed
+actions.set([";", () => {
+    settings.speed = Math.max(0, settings.speed - 2);
+}]);
 //(Enter) fullscreen
 actions.set(["Enter"], toggleFullScreen);
 //(.)(>) toggle dark mode
