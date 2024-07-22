@@ -79,11 +79,7 @@ function setStyle(name, value) {
 }
 
 function goToTop() {
-    if (settings.flip === 1) p.style.top = 0;
-    else {
-        const pos = p.scrollHeight - window.innerHeight;
-        p.style.top = `${-pos}px`;
-    }
+    p.style.top = 0;
 }
 
 window.addEventListener("keydown", ({ key }) => {
