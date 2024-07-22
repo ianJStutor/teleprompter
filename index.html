@@ -12,5 +12,17 @@
 <body>
     <p contenteditable="true"></p>
     <footer>Done</footer>
+
+    <!-- testing only -->
+    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>
+        let el = document.createElement('div');
+        document.body.appendChild(el);
+        
+        eruda.init({
+            container: el,
+            tool: ['console', 'elements']
+        });
+    </script>
 </body>
 </html>
