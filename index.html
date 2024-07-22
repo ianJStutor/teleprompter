@@ -1,28 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="mobile-web-app-capable" content="yes" />
-    <title>Teleprompter</title>
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-</head>
-<body>
-    <p contenteditable="true"></p>
-    <footer>Done</footer>
-
-    <!-- testing only -->
-    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-    <script>
-        let el = document.createElement('div');
-        document.body.appendChild(el);
-        
-        eruda.init({
-            container: el,
-            tool: ['console', 'elements']
-        });
-    </script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <title>Teleprompter</title>
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <p contenteditable="true"></p>
+        <footer>Done</footer>
+    </body>
 </html>
