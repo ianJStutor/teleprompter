@@ -37,7 +37,7 @@ p {
 }
 
 p:focus {
-    overflow-y: auto;
+    overflow-y: scroll;
     padding-bottom: 150px;
 }
 
