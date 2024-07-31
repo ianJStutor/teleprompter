@@ -36,8 +36,11 @@ p {
     transition: top 0.25s;
 }
 
-p:focus {
+body:has(p:focus) {
     overflow-y: scroll;
+}
+
+p:focus {
     padding-bottom: 150px;
 }
 
