@@ -15,31 +15,31 @@ const actions = new Map();
 actions.set(["-"], () => {
     settings.fontSize = Math.max(settings.fontSize - 1, settings.minFontSize);
     setStyle("--fontSize", `${settings.fontSize}px`);
-    goToTop();
+    //goToTop();
 });
 //(SHIFT+-) fast increase font size
 actions.set(["_"], () => {
     settings.fontSize = Math.max(settings.fontSize - 5, settings.minFontSize);
     setStyle("--fontSize", `${settings.fontSize}px`);
-    goToTop();
+    //goToTop();
 });
 //(=) increase font size
 actions.set(["="], () => {
     settings.fontSize++;
     setStyle("--fontSize", `${settings.fontSize}px`);
-    goToTop();
+    //goToTop();
 });
 //(SHIFT+=) fast increase font size
 actions.set(["+"], () => {
     settings.fontSize += 5;
     setStyle("--fontSize", `${settings.fontSize}px`);
-    goToTop();
+    //goToTop();
 });
 //(])(}) flip text
 actions.set(["[", "{"], () => {
     settings.flip = 1;
     setStyle("--flip", settings.flip);
-    goToTop();
+    //goToTop();
 });
 //(])(}) unflip text
 actions.set(["]", "}"], () => {
