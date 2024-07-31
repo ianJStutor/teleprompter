@@ -36,6 +36,11 @@ p {
     transition: top 0.25s;
 }
 
+p:focus {
+    overflow-y: auto;
+    padding-bottom: 150px;
+}
+
 p:focus + footer {
     display: block;
 }
