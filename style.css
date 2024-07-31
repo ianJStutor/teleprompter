@@ -38,9 +38,6 @@ p {
 
 body:has(p:focus) {
     overflow-y: scroll;
-}
-
-p:focus {
     padding-bottom: 150px;
 }
 
