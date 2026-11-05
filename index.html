@@ -1,16 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="mobile-web-app-capable" content="yes" />
         <title>Teleprompter</title>
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
         <link rel="stylesheet" href="style.css" />
         <script src="script.js" defer></script>
     </head>
     <body>
-        <p contenteditable="true"></p>
-        <footer>Done</footer>
+        <p id="script"></p>
+
+        <div id="indicator" class="mirror" aria-live="polite"></div>
+
+        <div id="files" class="mirror" hidden>
+            <h2>Scripts</h2>
+            <ul></ul>
+            <small>↑ ↓ choose · Enter load · L close</small>
+        </div>
+
+        <form id="token-form" hidden>
+            <label for="token">Paste a GitHub token (read-only, teleprompter-scripts only)</label>
+            <p id="token-message"></p>
+            <input id="token" type="password" autocomplete="off" spellcheck="false" />
+            <div>
+                <button type="submit">Save</button>
+                <button type="button" id="token-skip">Not now</button>
+            </div>
+        </form>
     </body>
 </html>

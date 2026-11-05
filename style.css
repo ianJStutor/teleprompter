@@ -1,8 +1,14 @@
 :root {
-    --fontSize: 30px;
-    --minFontSize: 10px;
-    --flip: 1;
-    --darkMode: 0;
+    --fontSize: 80px;
+    --bg: #fff;
+    --fg: #000;
+    --panel: #eee;
+}
+
+:root.dark {
+    --bg: #000;
+    --fg: #fff;
+    --panel: #222;
 }
 
 body {
@@ -11,50 +17,127 @@ body {
     height: 100dvh;
     overflow: hidden;
     font-family: sans-serif;
-    background-color: rgb(
-        calc(255 - var(--darkMode) * 255),
-        calc(255 - var(--darkMode) * 255),
-        calc(255 - var(--darkMode) * 255)
-    );
-    color: rgb(
-        calc(var(--darkMode) * 255),
-        calc(var(--darkMode) * 255),
-        calc(var(--darkMode) * 255)
-    );
+    background: var(--bg);
+    color: var(--fg);
 }
 
-p {
+/* The script. Position and mirroring are set by script.js as a transform. */
+#script {
     box-sizing: border-box;
     position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
     padding: 20px;
     margin: 0;
-    font-size: max(var(--fontSize), var(--minFontSize));
-    transform: scale(var(--flip), 1);
+    font-size: var(--fontSize);
+    line-height: 1.3;
     white-space: pre-wrap;
-    transition: top 0.25s;
+    overflow-wrap: break-word;
+    transform: translate3d(0, 0, 0) scaleX(-1); /* matches the JS default, so load doesn't animate a flip */
+    transition: transform 0.15s ease-out;
+    will-change: transform;
 }
 
-body:has(p:focus) {
-    overflow-y: scroll;
-    padding-bottom: 150px;
+#script.holding {
+    transition: none;
 }
 
-p:focus + footer {
-    display: block;
+/* Overlays that should read correctly through the mirror glass. */
+.mirror {
+    transform: scaleX(var(--flip, -1));
 }
 
-footer {
+#indicator {
     position: fixed;
-    bottom: 0;
-    padding: 15px;
-    box-sizing: border-box;
-    background: gainsboro;
-    box-shadow: 0 -1px 5px black;
+    top: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: var(--panel);
     font-size: 20px;
-    text-align: center;
-    width: 100%;
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+}
+
+#indicator.show {
+    opacity: 0.9;
+}
+
+#files {
+    position: fixed;
+    inset: 5% 10%;
+    overflow-y: auto;
+    padding: 16px 24px;
+    background: var(--panel);
+    border-radius: 8px;
+    font-size: 28px;
+}
+
+#files h2 {
+    margin: 0 0 12px;
+}
+
+#files ul {
+    list-style: none;
+    margin: 0 0 12px;
+    padding: 0;
+}
+
+#files li {
+    padding: 6px 10px;
+    border-radius: 4px;
     cursor: pointer;
+}
+
+#files li.selected {
+    background: var(--fg);
+    color: var(--bg);
+}
+
+#files li time {
+    opacity: 0.6;
+    font-size: 0.7em;
+    margin-left: 12px;
+}
+
+#files small {
+    opacity: 0.6;
+}
+
+/* Token box: never mirrored, so it can be read on the tablet screen directly. */
+#token-form {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    width: min(560px, calc(100% - 32px));
+    box-sizing: border-box;
+    padding: 16px;
+    background: var(--panel);
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+#token-form input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 8px 0;
+    padding: 8px;
+    font-size: 18px;
+}
+
+#token-message:empty {
     display: none;
+}
+
+#token-message {
+    margin: 8px 0 0;
+    color: #e66;
+}
+
+[hidden] {
+    display: none !important;
 }
